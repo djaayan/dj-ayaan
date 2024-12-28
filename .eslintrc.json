@@ -1,0 +1,65 @@
+{
+    "plugins": ["tailwindcss", "unused-imports"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2021,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "root": true,
+    "extends": [
+        "next/core-web-vitals",
+        "next/typescript",
+        "prettier",
+        "plugin:tailwindcss/recommended"
+    ],
+    "rules": {
+        "semi": "error",
+        "tailwindcss/no-custom-classname": "off",
+        "unused-imports/no-unused-imports": "warn",
+        "unused-imports/no-unused-vars": "warn",
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "no-unused-vars": ["off", "always"],
+        "quotes": ["error", "double"],
+        "eqeqeq": ["error", "always"],
+        "comma-spacing": [
+            "error",
+            {
+                "before": false,
+                "after": true
+            }
+        ],
+        "keyword-spacing": [
+            "error",
+            {
+                "before": true,
+                "after": true
+            }
+        ],
+        "object-curly-spacing": ["error", "always"],
+        "arrow-parens": ["error", "always"],
+        "no-trailing-spaces": ["error", {}],
+        "no-multi-spaces": ["error", {}],
+        "semi-spacing": [
+            "error",
+            {
+                "before": false,
+                "after": true
+            }
+        ]
+    },
+    "settings": {
+        "tailwindcss": {
+            "callees": ["cn"],
+            "config": "./tailwind.config.ts"
+        },
+        "next": {
+            "rootDir": ["./src/"]
+        }
+    },
+    "ignorePatterns": ["node_modules/", ".next/", "assets/", "public/"]
+}
