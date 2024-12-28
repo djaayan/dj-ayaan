@@ -38,7 +38,7 @@ export function About({ className, ...props }: GenericProps) {
     return (
         <section
             className={cn(
-                "z-10 flex items-center justify-center bg-background p-5 py-20 md:h-screen md:py-5",
+                "z-10 flex items-center justify-center bg-background p-5 py-20 md:min-h-screen md:py-20",
                 className
             )}
             {...props}
