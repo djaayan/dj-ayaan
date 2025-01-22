@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
+import { Gallery } from "./gallery";
 import { Genre } from "./genre";
 import { OpenedFor } from "./opened-for";
 
@@ -25,6 +26,7 @@ export function Collaboration({ className, ...props }: GenericProps) {
             )}
             {...props}
         >
+            <Gallery />
             <OpenedFor />
             <Genre />
 

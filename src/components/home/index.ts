@@ -1,6 +1,7 @@
 export * from "./about";
 export * from "./collaboration";
 export * from "./featuring";
+export * from "./gallery";
 export * from "./genre";
 export * from "./inter-dj";
 export * from "./landing";
