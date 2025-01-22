@@ -42,6 +42,7 @@ export function Footer({ className, ...props }: GenericProps) {
                                                 key={name}
                                                 href={href}
                                                 className="text-muted-foreground"
+                                                target="_blank"
                                             >
                                                 <Icon className="size-5" />
                                             </Link>

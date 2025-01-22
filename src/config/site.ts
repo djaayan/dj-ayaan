@@ -18,11 +18,12 @@ export const siteConfig: SiteConfig = {
         height: 630,
     },
     links: {
-        Facebook: "#",
-        Twitter: "#",
-        Instagram: "#",
-        Linkedin: "#",
-        Youtube: "#",
+        Facebook: "https://www.facebook.com/share/1EGkUrqncp/?mibextid=wwXIfr",
+        Mail: "mailto:djaayansinghbhantu07@gmail.com",
+        Instagram:
+            "https://www.instagram.com/djaayan.music?igsh=cHUzbDl5YmxjcnNl&utm_source=qr",
+        Youtube:
+            "https://youtube.com/@djaayanthepasscode6851?si=Pr6no9g5Gtnon9eZ",
     },
     menu: [
         {
