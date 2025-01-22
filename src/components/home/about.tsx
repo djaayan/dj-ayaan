@@ -3,6 +3,8 @@
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
+import Link from "next/link";
+import { Icons } from "../icons";
 
 export function About({ className, ...props }: GenericProps) {
     return (
@@ -102,6 +104,20 @@ export function About({ className, ...props }: GenericProps) {
                             positive vibes, focus and dedication along with his
                             awesome musical talents.
                         </motion.p>
+
+                        <motion.button
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 1.2 }}
+                        >
+                            <Link
+                                href="/about"
+                                className="glitch-button flex items-center gap-2 border border-primary px-4 py-2 text-sm text-primary md:text-base"
+                            >
+                                Take to bio
+                                <Icons.ArrowRight className="size-4" />
+                            </Link>
+                        </motion.button>
                     </motion.div>
                 </div>
             </div>

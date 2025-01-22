@@ -9,8 +9,8 @@ export const siteConfig: SiteConfig = {
     keywords: [],
     category: "Music",
     developer: {
-        name: "DRVGO",
-        url: "https://itsdrvgo.me/",
+        name: "kiwemedia",
+        url: "https://kiwemedia.com/",
     },
     og: {
         url: getAbsoluteURL("/og.webp"),

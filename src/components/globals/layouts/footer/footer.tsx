@@ -18,7 +18,8 @@ export function Footer({ className, ...props }: GenericProps) {
             <GeneralShell>
                 <div className="flex flex-col-reverse items-center justify-between gap-5 md:flex-row">
                     <p className="text-sm text-muted-foreground">
-                        <span>&copy; {new Date().getFullYear()}</span>{" "}
+                        <span>&copy; {new Date().getFullYear()}</span> made with
+                        ❤️ by{" "}
                         <Link
                             href={siteConfig.developer.url}
                             className="text-sm hover:underline"

@@ -4,7 +4,13 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "../ui/dialog";
 
 const galleryItems = [
     {
@@ -56,8 +62,6 @@ const galleryItems = [
 ];
 
 export function Gallery({ className, ...props }: GenericProps) {
-    const [selectedItem, setSelectedItem] = useState<number | null>(null);
-
     return (
         <div
             className={cn("relative flex w-full justify-center", className)}
@@ -87,72 +91,63 @@ export function Gallery({ className, ...props }: GenericProps) {
 
                     <div className="grid auto-rows-[200px] grid-cols-3 gap-4">
                         {galleryItems.map((item, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{
-                                    duration: 0.3,
-                                    delay: 0.1 * index,
-                                }}
-                                className={`relative cursor-pointer overflow-hidden rounded-lg ${item.span}`}
-                                onClick={() => setSelectedItem(index)}
-                            >
-                                <Image
-                                    src={
-                                        item.type === "image"
-                                            ? item.src
-                                            : item.thumbnail!
-                                    }
-                                    alt={item.alt}
-                                    layout="fill"
-                                    objectFit="cover"
-                                    className="transition-transform duration-300 hover:scale-110"
-                                />
+                            <Dialog key={index}>
+                                <DialogTrigger asChild>
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, scale: 0.8 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{
+                                            duration: 0.3,
+                                            delay: 0.1 * index,
+                                        }}
+                                        className={`relative cursor-pointer overflow-hidden rounded-lg ${item.span}`}
+                                    >
+                                        <Image
+                                            src={
+                                                item.type === "image"
+                                                    ? item.src
+                                                    : item.thumbnail!
+                                            }
+                                            alt={item.alt}
+                                            layout="fill"
+                                            objectFit="cover"
+                                            className="transition-transform duration-300 hover:scale-110"
+                                        />
 
-                                {item.type === "video" && (
-                                    <div className="absolute inset-0 flex items-center justify-center bg-black/50">
-                                        <Play className="size-12 text-white" />
-                                    </div>
-                                )}
-                            </motion.div>
+                                        {item.type === "video" && (
+                                            <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+                                                <Play className="size-12 text-white" />
+                                            </div>
+                                        )}
+                                    </motion.div>
+                                </DialogTrigger>
+
+                                <DialogContent className="p-0 md:w-auto">
+                                    <DialogHeader className="sr-only">
+                                        <DialogTitle>{item.alt}</DialogTitle>
+                                    </DialogHeader>
+
+                                    {item.type === "image" ? (
+                                        <Image
+                                            src={item.src}
+                                            alt={item.alt}
+                                            width={1200}
+                                            height={800}
+                                            className="max-h-[80vh] object-contain"
+                                        />
+                                    ) : (
+                                        <video
+                                            src={item.src}
+                                            controls
+                                            className="max-h-[80vh]"
+                                        />
+                                    )}
+                                </DialogContent>
+                            </Dialog>
                         ))}
                     </div>
-
-                    {selectedItem !== null && (
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
-                            onClick={() => setSelectedItem(null)}
-                        >
-                            <motion.div
-                                initial={{ scale: 0.8 }}
-                                animate={{ scale: 1 }}
-                                className="relative max-h-full max-w-4xl"
-                            >
-                                {galleryItems[selectedItem].type === "image" ? (
-                                    <Image
-                                        src={
-                                            galleryItems[selectedItem].src ||
-                                            "/placeholder.svg"
-                                        }
-                                        alt={galleryItems[selectedItem].alt}
-                                        width={1200}
-                                        height={800}
-                                        className="max-h-[80vh] object-contain"
-                                    />
-                                ) : (
-                                    <video
-                                        src={galleryItems[selectedItem].src}
-                                        controls
-                                        className="max-h-[80vh]"
-                                    />
-                                )}
-                            </motion.div>
-                        </motion.div>
-                    )}
                 </motion.section>
             </div>
         </div>
