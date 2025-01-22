@@ -10,7 +10,7 @@ export function Footer({ className, ...props }: GenericProps) {
     return (
         <footer
             className={cn(
-                "z-50 flex items-center justify-center bg-gradient-to-b from-background to-accent",
+                "z-50 flex items-center justify-center border-t bg-gradient-to-b from-background to-accent",
                 className
             )}
             {...props}

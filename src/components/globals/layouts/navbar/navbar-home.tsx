@@ -5,6 +5,7 @@ import { siteConfig } from "@/config/site";
 import { useNavbarStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -68,9 +69,18 @@ export function NavbarHome() {
                     title="Home"
                     className="flex items-center gap-1 text-2xl font-bold hover:opacity-100 active:opacity-100"
                 >
-                    <h4 className="text-xl font-bold uppercase md:text-4xl">
-                        {siteConfig.name}
-                    </h4>
+                    <div className="w-16 md:w-28">
+                        <Image
+                            src="https://utfs.io/a/wgl22isy86/HWQo5hUQqcU501gek7EdabJUh3sCN6X4uO2qy0PLpW18VwQf"
+                            alt="Logo"
+                            width={500}
+                            height={500}
+                            className="size-full object-cover"
+                        />
+                        <h4 className="sr-only text-xl font-bold uppercase md:text-4xl">
+                            {siteConfig.name}
+                        </h4>
+                    </div>
                 </Link>
 
                 <ul className="hidden items-center sm:flex">
