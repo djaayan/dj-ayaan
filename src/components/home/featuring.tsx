@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { Gallery } from "./gallery";
 import { Performances } from "./performances";
 import { Services } from "./services";
 
@@ -13,6 +14,7 @@ export function Featuring({ className, ...props }: GenericProps) {
             )}
             {...props}
         >
+            <Gallery />
             <Services />
             <Performances />
         </section>
