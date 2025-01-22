@@ -3,38 +3,8 @@
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
-import { useEffect, useMemo, useState } from "react";
 
 export function About({ className, ...props }: GenericProps) {
-    const [paths, setPaths] = useState<string[]>([]);
-    const numPaths = 3;
-    const baseRadius = 100;
-    const noiseAmount = 40;
-
-    const numPoints = 12;
-
-    const initialPaths = useMemo(
-        () =>
-            Array.from({ length: numPaths }, () =>
-                generatePoints(numPoints, baseRadius, noiseAmount)
-            ),
-        [numPaths, numPoints, baseRadius, noiseAmount]
-    );
-
-    useEffect(() => {
-        setPaths(initialPaths);
-
-        const interval = setInterval(() => {
-            setPaths(() =>
-                Array.from({ length: numPaths }, () =>
-                    generatePoints(numPoints, baseRadius, noiseAmount)
-                )
-            );
-        }, 800);
-
-        return () => clearInterval(interval);
-    }, [initialPaths, numPoints, baseRadius, noiseAmount]);
-
     return (
         <section
             className={cn(
@@ -84,56 +54,17 @@ export function About({ className, ...props }: GenericProps) {
                 </motion.h2>
 
                 <div className="flex flex-col items-center justify-between gap-10 md:flex-row">
-                    <motion.svg
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 1 }}
-                        viewport={{ once: true }}
-                        className="hidden md:inline-block"
-                        width="400"
-                        height="400"
-                        viewBox="-150 -150 300 300"
-                    >
-                        <defs>
-                            <filter id="glow">
-                                <feGaussianBlur
-                                    stdDeviation="3"
-                                    result="blur"
-                                />
-                                <feComposite
-                                    in="blur"
-                                    in2="SourceGraphic"
-                                    operator="over"
-                                />
-                            </filter>
-                        </defs>
-
-                        {paths.map((path, i) => (
-                            <motion.path
-                                key={i}
-                                d={path}
-                                fill="none"
-                                stroke="hsl(84, 100%, 59%)"
-                                strokeWidth="2"
-                                initial={{ opacity: 1 }}
-                                animate={{
-                                    d: paths[(i + 1) % paths.length] || path,
-                                }}
-                                transition={{
-                                    duration: 0.8,
-                                    type: "spring",
-                                    stiffness: 60,
-                                    damping: 12,
-                                    opacity: {
-                                        duration: 0.4, // Reduced from 1s to 0.4s
-                                        repeat: Infinity,
-                                        repeatType: "reverse",
-                                    },
-                                }}
-                                filter="url(#glow)"
+                    <div className="size-full md:basis-1/2">
+                        <div className="relative aspect-square w-full overflow-hidden rounded-lg">
+                            <video
+                                src="https://utfs.io/a/wgl22isy86/HWQo5hUQqcU5psMYA7ZiSJENHd3nUavsbQxwKAzmXZMrk5tc"
+                                autoPlay
+                                loop
+                                muted
+                                className="absolute inset-0 size-full object-cover"
                             />
-                        ))}
-                    </motion.svg>
+                        </div>
+                    </div>
 
                     <motion.div className="max-w-sm basis-1/2 space-y-5 text-balance text-sm md:text-base">
                         <motion.p
@@ -175,29 +106,5 @@ export function About({ className, ...props }: GenericProps) {
                 </div>
             </div>
         </section>
-    );
-}
-
-function generatePoints(
-    numPoints: number,
-    radius: number,
-    noise: number
-): string {
-    const points: [number, number][] = [];
-    const angleStep = (Math.PI * 2) / numPoints;
-
-    for (let i = 0; i < numPoints; i++) {
-        const angle = i * angleStep;
-        const noisyRadius = radius + (Math.random() - 0.5) * noise;
-        points.push([
-            Math.cos(angle) * noisyRadius,
-            Math.sin(angle) * noisyRadius,
-        ]);
-    }
-
-    return (
-        points
-            .map((point, i) => `${i === 0 ? "M" : "L"} ${point[0]},${point[1]}`)
-            .join(" ") + "Z"
     );
 }

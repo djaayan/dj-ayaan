@@ -26,9 +26,9 @@ export const siteConfig: SiteConfig = {
     },
     menu: [
         {
-            name: "Bio",
+            name: "About",
             description: "Learn more about us",
-            href: "/bio",
+            href: "/about",
             icon: "User",
         },
         {

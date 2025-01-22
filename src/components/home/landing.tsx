@@ -2,6 +2,8 @@
 
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
+import Link from "next/link";
+import { Icons } from "../icons";
 
 export function Landing({ className, ...props }: GenericProps) {
     return (
@@ -79,6 +81,20 @@ export function Landing({ className, ...props }: GenericProps) {
                             </motion.p>
                         </div>
                     </div>
+
+                    <motion.button
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 1.2 }}
+                    >
+                        <Link
+                            href="/contact"
+                            className="glitch-button flex items-center gap-2 border border-primary px-6 py-3 text-lg text-primary md:text-xl"
+                        >
+                            Book Now
+                            <Icons.ArrowRight />
+                        </Link>
+                    </motion.button>
                 </div>
             </div>
         </section>

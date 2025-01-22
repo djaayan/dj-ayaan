@@ -1,4 +1,5 @@
 import LucideIcons, {
+    ArrowRight,
     ArrowUpRight,
     BookOpen,
     ChevronDown,
@@ -27,6 +28,7 @@ import LucideIcons, {
 export type Icon = LucideIcons.LucideIcon;
 
 export const Icons = {
+    ArrowRight,
     ChevronDown,
     Music,
     Plus,
