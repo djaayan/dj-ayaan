@@ -1,6 +1,5 @@
 "use client";
 
-import { useVideoLoad } from "@/hooks/use-video-load";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
@@ -149,7 +148,16 @@ export function Gallery({ className, ...props }: GenericProps) {
                                             className="max-h-[80vh] object-contain"
                                         />
                                     ) : (
-                                        <DialogVideoContent src={item.src} />
+                                        <div className="relative">
+                                            <video
+                                                src={item.src}
+                                                controls
+                                                className="z-10 max-h-[80vh]"
+                                            />
+                                            <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+                                                <Icons.Loader2 className="size-5 animate-spin text-white" />
+                                            </div>
+                                        </div>
                                     )}
                                 </DialogContent>
                             </Dialog>
@@ -157,27 +165,6 @@ export function Gallery({ className, ...props }: GenericProps) {
                     </div>
                 </motion.section>
             </div>
-        </div>
-    );
-}
-
-function DialogVideoContent({ src }: { src: string }) {
-    const { isLoading, handleLoadStart, handleCanPlay } = useVideoLoad();
-
-    return (
-        <div className="relative">
-            <video
-                src={src}
-                controls
-                className="max-h-[80vh]"
-                onLoadStart={handleLoadStart}
-                onCanPlay={handleCanPlay}
-            />
-            {isLoading && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/50">
-                    <Icons.Loader2 className="size-5 animate-spin text-white" />
-                </div>
-            )}
         </div>
     );
 }
