@@ -17,16 +17,23 @@ export function Footer({ className, ...props }: GenericProps) {
         >
             <GeneralShell>
                 <div className="flex flex-col-reverse items-center justify-between gap-5 md:flex-row">
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-center text-sm text-muted-foreground md:text-start">
                         <span>&copy; {new Date().getFullYear()}</span> made with
                         ❤️ by{" "}
                         <Link
                             href={siteConfig.developer.url}
                             className="text-sm hover:underline"
                         >
-                            {siteConfig.developer.name}.
+                            {siteConfig.developer.name}
                         </Link>{" "}
-                        <span>All rights reserved.</span>
+                        X{" "}
+                        <Link
+                            href="https://sharktech.in"
+                            className="text-sm hover:underline"
+                        >
+                            sharktech
+                        </Link>
+                        . <span>All rights reserved.</span>
                     </p>
 
                     {siteConfig.links &&

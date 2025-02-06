@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
             {
                 protocol: "https",
                 hostname: "utfs.io",
-                pathname: "/a/wgl22isy86/**",
+                pathname: "/a/k28h802xyp/**",
             },
         ],
     },

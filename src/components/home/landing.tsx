@@ -5,11 +5,13 @@ import { motion } from "motion/react";
 import Link from "next/link";
 import { Icons } from "../icons";
 
-export function Landing({ className, ...props }: GenericProps) {
+export function Landing({ className }: GenericProps) {
     return (
-        <section
+        <motion.section
+            initial={{ filter: "blur(10px)" }}
+            animate={{ filter: "blur(0px)" }}
+            transition={{ delay: 1.5, duration: 0.5 }}
             className={cn("relative h-screen overflow-hidden", className)}
-            {...props}
         >
             <video
                 autoPlay
@@ -18,7 +20,7 @@ export function Landing({ className, ...props }: GenericProps) {
                 className="fixed left-0 top-0 size-full object-cover"
             >
                 <source
-                    src="https://utfs.io/a/wgl22isy86/HWQo5hUQqcU5C7heN1jOxqw7glnWhRLDQGbvzc6UEHeuVTiB"
+                    src="https://utfs.io/a/k28h802xyp/IiQWicq2IWP1rVQyWJkC4ow0Gb5ZxiV92fjSNDKTsHXye3Ut"
                     type="video/webm"
                 />
             </video>
@@ -97,6 +99,6 @@ export function Landing({ className, ...props }: GenericProps) {
                     </motion.button>
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 }

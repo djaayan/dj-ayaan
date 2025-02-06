@@ -14,6 +14,7 @@ import LucideIcons, {
     Instagram,
     Leaf,
     Linkedin,
+    Loader2,
     Mail,
     MapPin,
     Menu,
@@ -28,6 +29,7 @@ import LucideIcons, {
 export type Icon = LucideIcons.LucideIcon;
 
 export const Icons = {
+    Loader2,
     ArrowRight,
     ChevronDown,
     Music,

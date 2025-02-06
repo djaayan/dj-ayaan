@@ -1,6 +1,7 @@
 "use client";
 
 import { siteConfig } from "@/config/site";
+import { useVideoLoad } from "@/hooks/use-video-load";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 import Link from "next/link";
@@ -58,13 +59,8 @@ export function About({ className, ...props }: GenericProps) {
                 <div className="flex flex-col items-center justify-between gap-10 md:flex-row">
                     <div className="size-full md:basis-1/2">
                         <div className="relative aspect-square w-full overflow-hidden rounded-lg">
-                            <video
-                                src="https://utfs.io/a/wgl22isy86/HWQo5hUQqcU5psMYA7ZiSJENHd3nUavsbQxwKAzmXZMrk5tc"
-                                autoPlay
-                                loop
-                                muted
-                                className="absolute inset-0 size-full object-cover"
-                            />
+                            {/* Update the video section */}
+                            <AboutVideo />
                         </div>
                     </div>
 
@@ -122,5 +118,28 @@ export function About({ className, ...props }: GenericProps) {
                 </div>
             </div>
         </section>
+    );
+}
+
+function AboutVideo() {
+    const { isLoading, handleLoadStart, handleCanPlay } = useVideoLoad();
+
+    return (
+        <>
+            <video
+                src="https://utfs.io/a/k28h802xyp/IiQWicq2IWP1luZhanyohM4KO9kj80PIVrfQXFRvJUilYLdZ"
+                autoPlay
+                loop
+                muted
+                className="absolute inset-0 size-full object-cover"
+                onLoadStart={handleLoadStart}
+                onCanPlay={handleCanPlay}
+            />
+            {isLoading && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+                    <Icons.Loader2 className="size-5 animate-spin text-white" />
+                </div>
+            )}
+        </>
     );
 }

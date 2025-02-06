@@ -71,7 +71,7 @@ export function NavbarHome() {
                 >
                     <div className="w-16 md:w-28">
                         <Image
-                            src="https://utfs.io/a/wgl22isy86/HWQo5hUQqcU501gek7EdabJUh3sCN6X4uO2qy0PLpW18VwQf"
+                            src="https://utfs.io/a/k28h802xyp/IiQWicq2IWP1oWr9xlV8rOnGIJ5elT6NLQyhiUkXH7fMjcEv"
                             alt="Logo"
                             width={500}
                             height={500}

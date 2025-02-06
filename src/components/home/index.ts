@@ -5,6 +5,7 @@ export * from "./gallery";
 export * from "./genre";
 export * from "./inter-dj";
 export * from "./landing";
+export * from "./loader";
 export * from "./opened-for";
 export * from "./performances";
 export * from "./services";

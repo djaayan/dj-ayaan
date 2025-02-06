@@ -18,11 +18,10 @@ export function BioSection() {
                 className="relative aspect-square w-full overflow-hidden rounded-lg md:aspect-[4/5] md:w-1/2"
             >
                 <Image
-                    src="https://utfs.io/a/wgl22isy86/HWQo5hUQqcU5pNBc2nZiSJENHd3nUavsbQxwKAzmXZMrk5tc"
+                    src="https://utfs.io/a/k28h802xyp/IiQWicq2IWP1Ij5gQG2IWP19mXN5vwlkeM480oEfYpQHsuFC"
                     alt="DJ"
-                    layout="fill"
-                    objectFit="cover"
-                    className="transition-transform duration-300 hover:scale-110"
+                    fill
+                    className="object-cover transition-transform duration-300 hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
             </motion.div>

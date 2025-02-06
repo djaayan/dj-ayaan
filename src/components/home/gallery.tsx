@@ -1,9 +1,11 @@
 "use client";
 
+import { useVideoLoad } from "@/hooks/use-video-load";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import Image from "next/image";
+import { Icons } from "../icons";
 import {
     Dialog,
     DialogContent,
@@ -12,50 +14,50 @@ import {
     DialogTrigger,
 } from "../ui/dialog";
 
-const galleryItems = [
+export const galleryItems = [
     {
         type: "image",
-        src: "https://utfs.io/a/wgl22isy86/HWQo5hUQqcU5mkckfOuv7CH4WbU8MjrSlJZRBX6T3sgfdmDt",
+        src: "https://utfs.io/a/k28h802xyp/IiQWicq2IWP1kovvzEuHj5WxbGOLDqvBh7uZCzp3lewor6kH",
         alt: "DJ Performance 1",
         span: "col-span-2 row-span-2",
     },
     {
         type: "video",
-        src: "https://utfs.io/a/wgl22isy86/HWQo5hUQqcU5psMYA7ZiSJENHd3nUavsbQxwKAzmXZMrk5tc",
+        src: "https://utfs.io/a/k28h802xyp/IiQWicq2IWP1luZhanyohM4KO9kj80PIVrfQXFRvJUilYLdZ",
         alt: "DJ Video 1",
         span: "col-span-1 row-span-1",
         thumbnail:
-            "https://utfs.io/a/wgl22isy86/HWQo5hUQqcU5pNBc2nZiSJENHd3nUavsbQxwKAzmXZMrk5tc",
+            "https://utfs.io/a/k28h802xyp/IiQWicq2IWP1Ij5gQG2IWP19mXN5vwlkeM480oEfYpQHsuFC",
     },
     {
         type: "image",
-        src: "https://utfs.io/a/wgl22isy86/HWQo5hUQqcU5CfWB5rjOxqw7glnWhRLDQGbvzc6UEHeuVTiB",
+        src: "https://utfs.io/a/k28h802xyp/IiQWicq2IWP1Iy1m152IWP19mXN5vwlkeM480oEfYpQHsuFC",
         alt: "DJ Performance 2",
         span: "col-span-1 row-span-1",
     },
     {
         type: "image",
-        src: "https://utfs.io/a/wgl22isy86/HWQo5hUQqcU5x5ijnxp8RHvntJDLVwoBjpPIrdXm3fQi0s1S",
+        src: "https://utfs.io/a/k28h802xyp/IiQWicq2IWP1d7cd9FQsuq2le8Aj1sydfJx6PFSBVYt7k9oM",
         alt: "DJ Performance 3",
         span: "col-span-2 row-span-1",
     },
     {
         type: "video",
-        src: "https://utfs.io/a/wgl22isy86/HWQo5hUQqcU5joJGWV8Htq2XrwMu5Ym4c7ToQbRnGyOhZeFz",
+        src: "https://utfs.io/a/k28h802xyp/IiQWicq2IWP1DrI6NX8SF4OKzZq3ILJHka2R8hj6X1YmTNQo",
         alt: "DJ Video 2",
         span: "col-span-1 row-span-2",
         thumbnail:
-            "https://utfs.io/a/wgl22isy86/HWQo5hUQqcU5vaLxDgHGJlj1zo3dSfgh7R09wCDYNuLXyxZP",
+            "https://utfs.io/a/k28h802xyp/IiQWicq2IWP1gGXbGixzSCQ4xRusPE8hWtOvndF5YV3wmlMJ",
     },
     {
         type: "image",
-        src: "https://utfs.io/a/wgl22isy86/HWQo5hUQqcU504fS9wEdabJUh3sCN6X4uO2qy0PLpW18VwQf",
+        src: "https://utfs.io/a/k28h802xyp/IiQWicq2IWP1XUcZli7qBbSE1dhTRLx9cepazGYJIl042wFy",
         alt: "DJ Performance 4",
         span: "col-span-1 row-span-1",
     },
     {
         type: "image",
-        src: "https://utfs.io/a/wgl22isy86/HWQo5hUQqcU53XJE6pOo5atMZ7PNIvj1q2nKO8XWFTrp0DdA",
+        src: "https://utfs.io/a/k28h802xyp/IiQWicq2IWP1S4elvdxR296opniZlUN8wGEsKdI5OPC10tgH",
         alt: "DJ Performance 5",
         span: "col-span-1 row-span-1",
     },
@@ -102,7 +104,10 @@ export function Gallery({ className, ...props }: GenericProps) {
                                             duration: 0.3,
                                             delay: 0.1 * index,
                                         }}
-                                        className={`relative cursor-pointer overflow-hidden rounded-lg ${item.span}`}
+                                        className={cn(
+                                            "relative cursor-pointer overflow-hidden rounded-lg",
+                                            item.span
+                                        )}
                                     >
                                         <Image
                                             src={
@@ -111,13 +116,19 @@ export function Gallery({ className, ...props }: GenericProps) {
                                                     : item.thumbnail!
                                             }
                                             alt={item.alt}
-                                            layout="fill"
-                                            objectFit="cover"
-                                            className="transition-transform duration-300 hover:scale-110"
+                                            fill
+                                            className="z-10 object-cover transition-transform duration-300 hover:scale-110"
                                         />
 
+                                        <div
+                                            className="absolute inset-0 flex items-center justify-center bg-black/50"
+                                            aria-label="View Item"
+                                        >
+                                            <Icons.Loader2 className="size-5 animate-spin text-white" />
+                                        </div>
+
                                         {item.type === "video" && (
-                                            <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+                                            <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/50">
                                                 <Play className="size-12 text-white" />
                                             </div>
                                         )}
@@ -138,11 +149,7 @@ export function Gallery({ className, ...props }: GenericProps) {
                                             className="max-h-[80vh] object-contain"
                                         />
                                     ) : (
-                                        <video
-                                            src={item.src}
-                                            controls
-                                            className="max-h-[80vh]"
-                                        />
+                                        <DialogVideoContent src={item.src} />
                                     )}
                                 </DialogContent>
                             </Dialog>
@@ -150,6 +157,27 @@ export function Gallery({ className, ...props }: GenericProps) {
                     </div>
                 </motion.section>
             </div>
+        </div>
+    );
+}
+
+function DialogVideoContent({ src }: { src: string }) {
+    const { isLoading, handleLoadStart, handleCanPlay } = useVideoLoad();
+
+    return (
+        <div className="relative">
+            <video
+                src={src}
+                controls
+                className="max-h-[80vh]"
+                onLoadStart={handleLoadStart}
+                onCanPlay={handleCanPlay}
+            />
+            {isLoading && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+                    <Icons.Loader2 className="size-5 animate-spin text-white" />
+                </div>
+            )}
         </div>
     );
 }
