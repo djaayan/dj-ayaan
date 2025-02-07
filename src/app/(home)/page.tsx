@@ -13,7 +13,7 @@ export default function Page() {
             <Loader />
             <Landing />
             <About />
-            <InterDJ videoUrl="https://utfs.io/a/k28h802xyp/IiQWicq2IWP1fGHDf6QjXzIwZ9M8KWHtpurA31eTDRc04qnU" />
+            <InterDJ imageUrl="https://utfs.io/a/k28h802xyp/IiQWicq2IWP1kovvzEuHj5WxbGOLDqvBh7uZCzp3lewor6kH" />
             <Featuring />
             <InterDJ
                 videoUrl="https://utfs.io/a/k28h802xyp/IiQWicq2IWP1p55D4R3g8toxQPqMWjrODGNVlkcE7gdasb2A"

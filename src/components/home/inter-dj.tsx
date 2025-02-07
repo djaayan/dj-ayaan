@@ -1,15 +1,18 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface PageProps extends GenericProps {
-    videoUrl: string;
+    videoUrl?: string;
+    imageUrl?: string;
     overlayColor?: string;
 }
 
 export function InterDJ({
     className,
     videoUrl,
+    imageUrl,
     overlayColor,
     ...props
 }: PageProps) {
@@ -21,14 +24,25 @@ export function InterDJ({
             )}
             {...props}
         >
-            <video
-                autoPlay
-                loop
-                muted
-                className="absolute bottom-0 left-0 size-full object-cover"
-            >
-                <source src={videoUrl} type="video/webm" />
-            </video>
+            {videoUrl && (
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    className="absolute bottom-0 left-0 size-full object-cover"
+                >
+                    <source src={videoUrl} type="video/webm" />
+                </video>
+            )}
+
+            {imageUrl && (
+                <Image
+                    src={imageUrl}
+                    alt="InterDJ"
+                    fill
+                    className="absolute bottom-0 left-0 size-full object-cover"
+                />
+            )}
 
             <div
                 className={cn(
