@@ -26,7 +26,7 @@ const guestPerformances = [
     "CATWALK (NEPAL)",
     "OMNIA (NEPAL)",
     "CLUB500 (NEPAL)",
-    "DEER REPUBLIC",
+    "BEER REPUBLIC",
     "CLUB NO 17",
     "ROXBERRY PUB & CAFE",
     "WALKER'S VILLAGE",
