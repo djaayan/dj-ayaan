@@ -3,6 +3,7 @@
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
 import { Icons } from "../icons";
 
@@ -58,12 +59,11 @@ export function About({ className, ...props }: GenericProps) {
                 <div className="flex flex-col items-center justify-between gap-10 md:flex-row">
                     <div className="size-full md:basis-1/2">
                         <div className="relative aspect-square w-full overflow-hidden rounded-lg">
-                            <video
-                                src="https://utfs.io/a/k28h802xyp/IiQWicq2IWP1luZhanyohM4KO9kj80PIVrfQXFRvJUilYLdZ"
-                                autoPlay
-                                loop
-                                muted
-                                className="absolute inset-0 z-10 size-full object-cover"
+                            <Image
+                                src="https://utfs.io/a/k28h802xyp/IiQWicq2IWP1ud7eiNwaOlX3RqxH6G79UorhSyJi5jzNdAKb"
+                                alt="DJ"
+                                fill
+                                className="absolute inset-0 z-10 size-full object-cover transition-transform duration-300 hover:scale-110"
                             />
                             <div className="absolute inset-0 flex items-center justify-center bg-black/50">
                                 <Icons.Loader2 className="size-5 animate-spin text-white" />
